@@ -4,7 +4,7 @@ import extendCreep from './extend/MCreep'
 import { errorMapper } from './modules/errorMapper'
 import attacker from './role/attacker';
 
-export const loop = function () {
+export const loop = errorMapper (function () {
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
@@ -22,4 +22,4 @@ export const loop = function () {
             attacker.run(creep)
         }
     }
-}
+})
